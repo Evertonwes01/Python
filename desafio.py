@@ -27,7 +27,7 @@ while True:
             extrato += f"Depósito: RS {valor:.2f}\n"
         
         else:
-            print("Operação falhou: Ovalor informado é invalido.")
+            print("Operação falhou: O valor informado é invalido.")
 
     elif opcao == "2":
         valor = float(input("Informe o valor de saque: "))
@@ -53,7 +53,7 @@ while True:
             numero_saques += 1
         
         else:
-            print("Operação falhou: Ovalor informado é invalido.")
+            print("Operação falhou: O valor informado é invalido.")
 
     elif opcao == "3":
         print("\n==================== EXTRATO ====================")
