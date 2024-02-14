@@ -36,18 +36,18 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
         print("\n@@@ Operação Falhou! O valor de saque excede o limite. @@@")
             
     elif excedeu_saques:
-        print("\n@@@ Operação Falhou! Número máximo de s aques excedido. @@@")
+        print("\n@@@ Operação Falhou! Número máximo de saques excedido. @@@")
             
     elif valor > 0:
         saldo -= valor
         extrato += f"Saque:\t\tR$ {valor:.2f}\n"
         numero_saques += 1
         print("\n=== Saque realizado com Sucesso! ===")
-            
+        
     else:
         print("\n@@@ Operação falhou: O valor informado é invalido. @@@")
 
-    return saldo, extrato
+    return saldo, extrato, numero_saques
 
 def exibir_extrato(saldo, /, *, extrato):
     print("\n==================== EXTRATO ====================")
@@ -98,11 +98,10 @@ def listar_contas(contas):
 def main():
     LIMITE_SAQUES = 3
     AGENCIA = "0001"
-
     saldo = 0
     limite = 1000
     extrato = ""
-    numero_saques = 0
+    numero_saques = 1
     usuarios = []
     contas = []
 
@@ -118,13 +117,13 @@ def main():
         elif opcao == "2":
             valor = float(input("Informe o valor de saque: "))
 
-            saldo, extrato = sacar(
+            saldo, extrato, numero_saques = sacar(
                 saldo=saldo,
                 valor=valor,
                 extrato=extrato,
                 limite=limite,
                 numero_saques=numero_saques,
-                limite_saques=LIMITE_SAQUES,
+                limite_saques=LIMITE_SAQUES
             )
 
         elif opcao == "3":
@@ -148,5 +147,6 @@ def main():
             break
         else:
             print("Operação inválida, por favor selecione novamente a operação desejada.")
+
 
 main()
